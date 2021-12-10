@@ -32,6 +32,9 @@
     <Text Include="out1.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="result.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="view.h">

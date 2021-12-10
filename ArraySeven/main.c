@@ -63,11 +63,13 @@ int main() {
 
     if (fin == NULL) {
         fprintf(fout, "Файл не найден.\n");
+        printf("Файл не найден.\n");
         fclose(fout);
         return ERR_NO_FILE;
     }
     else if (feof(fin)) {
         fprintf(fout, "Файл пуст.\n");
+        printf("Файл пуст.\n");
         fclose(fout);
         return ERR_FILE_EMPTY;
     }
@@ -78,41 +80,66 @@ int main() {
         fgets(tmp, sizeof(tmp), fin);
         if (!strlen(tmp)) {
             fprintf(fout, "Некорректные данные.\n");
+            printf("Некорректные данные.\n");
             fclose(fout);
             return ERR_EMPTY_LINE;
         }
         if (row++ > 5) {
             fprintf(fout, "Некорректные данные.\n");
+            printf("Некорректные данные.\n");
             fclose(fout);
             return ERR_MORE_LINES;
         }
         if (strlen(tmp) > 50) {
             fprintf(fout, "Некорректные данные.\n");
+            printf("Некорректные данные.\n");
             fclose(fout);
             return ERR_LONG_LINE;
         }
     }
 
     fseek(fin, 0, SEEK_SET);
-    int arr_count = 0, seven_count = 0;
-    int* arr = (int*)malloc(100 * sizeof(int));
-
+    
     while (!feof(fin)) {
-        if (!fscanf(fin, "%d", arr + arr_count++)) {
-            fprintf(fout, "Некорректные данные. Символ в файле.\n");
-            fclose(fout);
-            return ERR_INVALID_PARAM;
+        char buffer[80];
+        fgets(buffer, 80, fin);
+
+        int arr_count = 0, seven_count = 0;
+        int* arr = (int*)malloc(100 * sizeof(int));
+
+        char s[50];
+        int erase = 0;
+        int cod = sscanf(buffer, "%d", arr + arr_count++);
+        while (cod != EOF) {
+            if (cod == 0) {
+                fprintf(fout, "Некорректные данные. Символ в файле.\n");
+                printf("Некорректные данные. Символ в файле.\n");
+                fclose(fout);
+                return ERR_INVALID_PARAM;
+            }
+            sscanf(buffer, "%s", s);
+            erase = erase + strlen(s) + 1;
+            strnset(buffer, ' ', erase);
+            cod = sscanf(buffer, "%d", arr + arr_count++);
         }
+        arr_count--;
+
+        int* seven = check_seven(arr, arr_count, &seven_count);
+        sort(seven, seven_count);
+        set_seven(arr, arr_count, seven);
+
+        for (int i = 0; i < arr_count; ++i) {
+            printf("%d ", arr[i]);
+            fprintf(fout, "%d ", arr[i]);
+        }
+        printf("\n");
+        fprintf(fout, "\n");
+        free(arr);
+        free(seven);
+
     }
     
-    int* seven = check_seven(arr, arr_count, &seven_count); // модуль 2
-    sort(seven, seven_count); // модуль 3
-    set_seven(arr, arr_count, seven); // модуль 4
-
-    for (int i = 0; i < arr_count; ++i) {
-        printf("%d ", arr[i]);
-        fprintf(fout, "%d ", arr[i]);
-    }
+    
 
     fclose(fin);
     fclose(fout);

@@ -145,6 +145,7 @@
   <ItemGroup>
     <Text Include="in1.txt" />
     <Text Include="out1.txt" />
+    <Text Include="result.txt" />
     <Text Include="test1.txt" />
   </ItemGroup>
   <ItemGroup>
