@@ -16,7 +16,7 @@ int arrcmp(int* arr1, int count1, int* arr2, int count2) {
     return 1;
 }
 
-void testû(void)
+void main()
 {
     int err_cnt = 0;
 
@@ -28,7 +28,7 @@ void testû(void)
         int count1 = 3;
         int count2 = 0;
         int* seven = check_seven(a, count1, &count2);
-        if (arrcmp(a, count1, res, count2)) {
+        if (0 != count2) {
             err_cnt++;
         }
         free(seven);
@@ -36,10 +36,10 @@ void testû(void)
     {
         int a[] = { 7, 2, 3 };
         int res[] = { 7 };
-        int count1 = 3;
-        int count2 = 0;
-        int* seven = check_seven(a, count1, &count2);
-        if (arrcmp(a, count1, res, count2)) {
+        int count_a = 3, count_res = 1;
+        int count_seven;
+        int* seven = check_seven(a, count_a, &count_seven);
+        if (!arrcmp(seven, count_seven, res, count_res)) {
             err_cnt++;
         }
         free(seven);
@@ -47,10 +47,10 @@ void testû(void)
     {
         int a[] = { -7, -177, -107 };
         int res[] = { -7, -177, -107 };
-        int count1 = 3;
-        int count2 = 0;
-        int* seven = check_seven(a, count1, &count2);
-        if (arrcmp(a, count1, res, count2)) {
+        int count_a = 3, count_res = 3;
+        int count_seven;
+        int* seven = check_seven(a, count_a, &count_seven);
+        if (!arrcmp(seven, count_seven, res, count_res)) {
             err_cnt++;
         }
         free(seven);
@@ -64,6 +64,7 @@ void testû(void)
         }
         free(seven);
     }
+    // sort
 
 
     printf("%s: %s\n", __func__, err_cnt ? "FAILED" : "OK");

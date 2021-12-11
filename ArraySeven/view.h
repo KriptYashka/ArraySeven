@@ -5,7 +5,7 @@
 #include <assert.h>
 
 int* check_seven(int* arr, int arr_count, int* seven_count) {
-    assert(arr_count >= 0);
+    //assert(arr_count >= 0);
     if (arr_count < 0) {
         return NULL;
     }
@@ -20,8 +20,8 @@ int* check_seven(int* arr, int arr_count, int* seven_count) {
 }
 
 
-void set_seven(int* arr, int arr_count, int* seven) {
-    assert(arr_count >= 0);
+void* set_seven(int* arr, int arr_count, int* seven) {
+    //assert(arr_count >= 0);
     if (arr_count < 0) {
         return NULL;
     }
@@ -33,8 +33,8 @@ void set_seven(int* arr, int arr_count, int* seven) {
     }
 }
 
-void sort(int data[], int n) {
-    assert(n >= 0);
+void* sort(int data[], int n) {
+    //assert(n >= 0);
     if (n < 0) {
         return NULL;
     }
