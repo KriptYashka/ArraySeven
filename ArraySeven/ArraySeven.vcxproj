@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{190c9045-6480-416a-bdc8-8e4a59ee1f93}</ProjectGuid>
+    <ProjectGuid>{bf0486ae-cd80-411a-9217-31718994ca5c}</ProjectGuid>
     <RootNamespace>ArraySeven</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -140,20 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="unit_test.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="in1.txt" />
-    <Text Include="out1.txt" />
-    <Text Include="result.txt" />
-    <Text Include="test1.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="view.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="run_tests.bat" />
-    <None Include="test.bat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

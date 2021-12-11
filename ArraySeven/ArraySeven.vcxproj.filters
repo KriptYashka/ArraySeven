@@ -18,21 +18,9 @@
     <ClCompile Include="main.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="unit_test.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in1.txt">
-      <Filter>Файлы ресурсов</Filter>
-    </Text>
-    <Text Include="test1.txt">
-      <Filter>Файлы ресурсов</Filter>
-    </Text>
-    <Text Include="out1.txt">
-      <Filter>Файлы ресурсов</Filter>
-    </Text>
-    <Text Include="result.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
   </ItemGroup>
@@ -40,13 +28,5 @@
     <ClInclude Include="view.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="run_tests.bat">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
-    <None Include="test.bat">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
   </ItemGroup>
 </Project>
