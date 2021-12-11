@@ -85,10 +85,38 @@ void main()
     }
     {
         int a[] = { 1, 2, 3 };
-        int count_a = 3, count_res = 3;
+        int count_a = 3;
         int count_seven;
         sort(a, count_a);
         if (sort(a, -1) != NULL) {
+            err_cnt++;
+        }
+    }
+    // set_seven
+    {
+        int a[] = { 1, 2, 3, 7 };
+        int seven[] = { 17 };
+        int res[] = { 1, 2, 3, 17 };
+        int count_a = 4, count_res = 4;
+        set_seven(a, count_a, seven);
+        if (!arrcmp(a, count_a, res, count_res)) {
+            err_cnt++;
+        }
+    }
+    {
+        int a[] = { 7, 7, 7 };
+        int seven[] = { 17, 27, 37 };
+        int res[] = { 17, 27, 37 };
+        int count_a = 3, count_res = 3;
+        set_seven(a, count_a, seven);
+        if (!arrcmp(a, count_a, res, count_res)) {
+            err_cnt++;
+        }
+    }
+    {
+        int a[] = { 7, 7, 7 };
+        int seven[] = { 17, 27, 37 };
+        if (set_seven(a, -1, seven) != NULL) {
             err_cnt++;
         }
     }
