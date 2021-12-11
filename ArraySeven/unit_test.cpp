@@ -65,7 +65,34 @@ void main()
         free(seven);
     }
     // sort
-
+    {
+        int a[] = { 1, 2, 3 };
+        int res[] = { 1, 2, 3 };
+        int count_a = 3, count_res = 3;
+        sort(a, count_a);
+        if (!arrcmp(a, count_a, res, count_res)) {
+            err_cnt++;
+        }
+    }
+    {
+        int a[] = { 10, 9, 8, 7, 5 };
+        int res[] = { 5, 7, 8, 9, 10 };
+        int count_a = 5, count_res = 5;
+        sort(a, count_a);
+        if (!arrcmp(a, count_a, res, count_res)) {
+            err_cnt++;
+        }
+    }
+    {
+        int a[] = { 1, 2, 3 };
+        int count_a = 3, count_res = 3;
+        int count_seven;
+        sort(a, count_a);
+        if (sort(a, -1) != NULL) {
+            err_cnt++;
+        }
+    }
 
     printf("%s: %s\n", __func__, err_cnt ? "FAILED" : "OK");
+    printf("Have a good day! ^_^");
 }
