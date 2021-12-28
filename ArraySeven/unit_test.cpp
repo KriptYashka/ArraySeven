@@ -6,14 +6,13 @@
 
 #define OK                   0
 #define ERR_INVALID_PARAM   -1
-#define ERR_NO_DATA         -2
 
 int arrcmp(int* arr1, int count1, int* arr2, int count2) {
-    if (count1 != count2) return 0;
+    if (count1 != count2) return ERR_INVALID_PARAM;
     for (int i = 0; i < count1; ++i) {
-        if (arr1[i] != arr2[i]) return 0;
+        if (arr1[i] != arr2[i]) return ERR_INVALID_PARAM;
     }
-    return 1;
+    return OK;
 }
 
 void main()
@@ -39,7 +38,7 @@ void main()
         int count_a = 3, count_res = 1;
         int count_seven;
         int* seven = check_seven(a, count_a, &count_seven);
-        if (!arrcmp(seven, count_seven, res, count_res)) {
+        if (arrcmp(seven, count_seven, res, count_res)) {
             err_cnt++;
         }
         free(seven);
@@ -50,7 +49,7 @@ void main()
         int count_a = 3, count_res = 3;
         int count_seven;
         int* seven = check_seven(a, count_a, &count_seven);
-        if (!arrcmp(seven, count_seven, res, count_res)) {
+        if (arrcmp(seven, count_seven, res, count_res)) {
             err_cnt++;
         }
         free(seven);
@@ -70,7 +69,7 @@ void main()
         int res[] = { 1, 2, 3 };
         int count_a = 3, count_res = 3;
         sort(a, count_a);
-        if (!arrcmp(a, count_a, res, count_res)) {
+        if (arrcmp(a, count_a, res, count_res)) {
             err_cnt++;
         }
     }
@@ -79,7 +78,7 @@ void main()
         int res[] = { 5, 7, 8, 9, 10 };
         int count_a = 5, count_res = 5;
         sort(a, count_a);
-        if (!arrcmp(a, count_a, res, count_res)) {
+        if (arrcmp(a, count_a, res, count_res)) {
             err_cnt++;
         }
     }
@@ -99,7 +98,7 @@ void main()
         int res[] = { 1, 2, 3, 17 };
         int count_a = 4, count_res = 4;
         set_seven(a, count_a, seven);
-        if (!arrcmp(a, count_a, res, count_res)) {
+        if (arrcmp(a, count_a, res, count_res)) {
             err_cnt++;
         }
     }
@@ -109,7 +108,7 @@ void main()
         int res[] = { 17, 27, 37 };
         int count_a = 3, count_res = 3;
         set_seven(a, count_a, seven);
-        if (!arrcmp(a, count_a, res, count_res)) {
+        if (arrcmp(a, count_a, res, count_res)) {
             err_cnt++;
         }
     }
@@ -122,5 +121,5 @@ void main()
     }
 
     printf("%s: %s\n", __func__, err_cnt ? "FAILED" : "OK");
-    printf("Have a good day! ^_^");
+    printf("Have a good day! ^_^\n");
 }
